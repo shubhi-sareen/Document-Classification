@@ -3,7 +3,9 @@ from math import log
 import re
 import numpy as np
 import matplotlib as plt 
-
+from sklearn.linear_model import LogisticRegression
+from sklearn import metrics
+from sklearn.neural_network import MLPClassifier
 trainTopics = [] #lisdyt of list of topics, "None"  if no topic
 trainTitle = []
 trainBody = []
@@ -21,10 +23,15 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		print i
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		isBodyPresent = False
 		isTitlePresent = False
 		if "LEWISSPLIT=\"TRAIN\"" in linesplit:
 			
+
 			while content[i+1]!="</REUTERS>":
 				if content[i].startswith('<TITLE>'):
 					titleSplit = content[i].split("<TITLE>")
@@ -114,6 +121,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		isBodyPresent = False
 		isTitlePresent = False
 		if "LEWISSPLIT=\"TRAIN\"" in linesplit:
@@ -208,6 +218,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		isBodyPresent = False
 		isTitlePresent = False
 		if "LEWISSPLIT=\"TRAIN\"" in linesplit:
@@ -301,6 +314,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		isBodyPresent = False
 		isTitlePresent = False
 		if "LEWISSPLIT=\"TRAIN\"" in linesplit:
@@ -395,6 +411,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		isBodyPresent = False
 		isTitlePresent = False
 		if "LEWISSPLIT=\"TRAIN\"" in linesplit:
@@ -489,6 +508,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		isBodyPresent = False
 		isTitlePresent = False
 		if "LEWISSPLIT=\"TRAIN\"" in linesplit:
@@ -583,6 +605,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		isBodyPresent = False
 		isTitlePresent = False
 		if "LEWISSPLIT=\"TRAIN\"" in linesplit:
@@ -677,6 +702,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		isBodyPresent = False
 		isTitlePresent = False
 		if "LEWISSPLIT=\"TRAIN\"" in linesplit:
@@ -771,6 +799,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		isBodyPresent = False
 		isTitlePresent = False
 		if "LEWISSPLIT=\"TRAIN\"" in linesplit:
@@ -865,6 +896,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		isBodyPresent = False
 		isTitlePresent = False
 		if "LEWISSPLIT=\"TRAIN\"" in linesplit:
@@ -959,6 +993,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		isBodyPresent = False
 		isTitlePresent = False
 		if "LEWISSPLIT=\"TRAIN\"" in linesplit:
@@ -1053,6 +1090,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		isBodyPresent = False
 		isTitlePresent = False
 		if "LEWISSPLIT=\"TRAIN\"" in linesplit:
@@ -1147,6 +1187,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		if "LEWISSPLIT=\"NOT-USED\"" in linesplit:
 			i+=1
 			continue
@@ -1244,6 +1287,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		if "LEWISSPLIT=\"NOT-USED\"" in linesplit:
 			i+=1
 			continue
@@ -1342,6 +1388,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		if "LEWISSPLIT=\"NOT-USED\"" in linesplit:
 			i+=1
 			continue
@@ -1440,6 +1489,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		if "LEWISSPLIT=\"NOT-USED\"" in linesplit:
 			i+=1
 			continue
@@ -1538,6 +1590,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		if "LEWISSPLIT=\"NOT-USED\"" in linesplit:
 			i+=1
 			continue
@@ -1636,6 +1691,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		if "LEWISSPLIT=\"NOT-USED\"" in linesplit:
 			i+=1
 			continue
@@ -1734,6 +1792,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		if "LEWISSPLIT=\"NOT-USED\"" in linesplit:
 			i+=1
 			continue
@@ -1832,6 +1893,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		if "LEWISSPLIT=\"NOT-USED\"" in linesplit:
 			i+=1
 			continue
@@ -1930,6 +1994,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		if "LEWISSPLIT=\"NOT-USED\"" in linesplit:
 			i+=1
 			continue
@@ -2028,6 +2095,9 @@ i=1
 while i < range(len(content)):
 	linesplit = content[i].split(" ")
 	if "<REUTERS" in linesplit:
+		if "TOPICS=\"NO\"" in linesplit:
+			i+=1
+			continue
 		if "LEWISSPLIT=\"NOT-USED\"" in linesplit:
 			i+=1
 			continue
@@ -2117,6 +2187,7 @@ while i < range(len(content)):
 	if i >= len(content):
 		break
 
+print "xoxo"
 uniqueWords = Set([])
 for lines in trainBody:
 	words = re.split('\s|(?<!\d)[,.]|[,.](?!\d)',lines)
@@ -2145,7 +2216,7 @@ for body in trainBody:
 	s = Set([])
 	for x in re.split('\s|(?<!\d)[,.]|[,.](?!\d)',body):
 		x=x.lower()
-		if "&" in x or '1' in x or '2' in x or '3' in x or '4' in x or '5' in x or '6' in x or '7' in x or '8' in x or '9' in x or '0' in x or '.' in x or x == 'a' or x == 'the' or x =='an':
+		if "\\" in x or "&" in x or '1' in x or '2' in x or '3' in x or '4' in x or '5' in x or '6' in x or '7' in x or '8' in x or '9' in x or '0' in x or '.' in x or x == 'a' or x == 'the' or x =='an':
 			continue
 		if "\'s" in x:
 			s.add(x[:-2])
@@ -2164,33 +2235,29 @@ for body in trainBody:
 	set_train_body.append(s)
 	termFrequency.append(to_insert)
 
-
-i = 1
-uniqueWordsToIndex = {}
-j = 0
-for word in uniqueWords:
-	uniqueWordsToIndex[word] = j
-	j=j+1
-
-arr = np.zeros((len(uniqueWordsToIndex),len(uniqueWordsToIndex)))
-
-for body in set_train_body:
-	for word_column in body:
-		flag = 0
-		for word_row in body:
-			if word_column == word_row:
-				if flag == 0:
-					flag = 1
-					continue
-			print i
-			i+=1
-			arr[uniqueWordsToIndex[word_row],uniqueWordsToIndex[word_column]]+=1
-
-la = np.linalg
-U,s,Vh = la.svd(arr,full_matrices=False)
-
-'''for i in range(len(uniqueWords)):
-	plt.text(U[i,0],U[i,1],words[i])
+set_test_body = list(Set([]))
+for body in testBody:
+	to_insert = {}
+	s = Set([])
+	for x in re.split('\s|(?<!\d)[,.]|[,.](?!\d)',body):
+		x=x.lower()
+		if "\\" in x or "&" in x or '1' in x or '2' in x or '3' in x or '4' in x or '5' in x or '6' in x or '7' in x or '8' in x or '9' in x or '0' in x or '.' in x or x == 'a' or x == 'the' or x =='an':
+			continue
+		if "\'s" in x:
+			s.add(x[:-2])
+			continue
+		if ")" in x:
+			s.add(x[:-1])
+			continue
+		if "(" in x:
+			s.add(x[2:])
+			continue
+		if x not in to_insert:
+			to_insert[x] = 1
+		else:
+			to_insert[x]+=1
+		s.add(x)
+	set_test_body.append(s)
 
 for word in uniqueWords:
 	for body in set_train_body:
@@ -2213,11 +2280,89 @@ for dic in termFrequency:
 		to_insert[k] = (1+log(dic[k]))*log(len(trainBody)/float(doc_count[k]))
 	tf_idf.append(to_insert)
 
-print tf_idf
-print len(tf_idf)
-print i
+max = []
+for dic in tf_idf:
+	maxt = 0
+	for k in dic:
+		if dic[k] > maxt:
+			maxt = dic[k]
+	max.append(maxt)
 
-#Sort a dictionary by value
-#Words with maximum tf-idf..make a cluster of such words for each doc type
-#Look for other algorithms to implement from the internet
-#Topicality?'''
+uniqueWordsToIndex = {}
+counter = -1
+for i in range(len(tf_idf)):
+	dic = tf_idf[i]
+	for k in dic:
+		if (max[i]-dic[k])/float(max[i]) < 0.3 and k not in uniqueWordsToIndex:
+			counter=counter+1
+			uniqueWordsToIndex[k] = counter
+
+print uniqueWordsToIndex
+
+train_input_vector = []
+
+for lines in set_train_body:
+
+	arr = np.zeros(len(uniqueWordsToIndex))
+	for words in lines:
+		if words in uniqueWordsToIndex:
+			arr[uniqueWordsToIndex[words]] = 1
+
+	train_input_vector.append(arr)
+
+train_input = np.array(train_input_vector)
+
+
+
+test_input_vector = []
+
+for lines in set_test_body:
+
+	arr = np.zeros(len(uniqueWordsToIndex))
+	for words in lines:
+		if words in uniqueWordsToIndex:
+			arr[uniqueWordsToIndex[words]] = 1
+
+	test_input_vector.append(arr)
+
+test_input = np.array(test_input_vector)
+print "xoxo"
+with open("reuters/all-topics-strings.lc.txt") as f:
+    content = f.readlines()
+
+content = [x.strip() for x in content] 
+
+topicsToIndex = {}
+j = 0
+for words in content:
+	topicsToIndex[words] = j
+	j+=1
+topicsToIndex['None'] = j
+
+train_output_vector = []
+for lines in trainTopics:
+	train_output_vector.append(topicsToIndex[lines[0]])
+train_output = np.array(train_output_vector)
+
+
+test_output_vector = []
+for lines in testTopics:
+	test_output_vector.append(topicsToIndex[lines[0]])
+
+test_output = np.array(test_output_vector)
+print('\nLogistic Regression')
+
+LR = LogisticRegression(tol=0.0001,solver = 'lbfgs', multi_class = 'multinomial', max_iter=1000, verbose =3)
+LR.fit(train_input, train_output)
+y_pred = LR.predict(test_input)
+
+print('\nLogistic Regression')
+print('Accuracy Score: ',metrics.accuracy_score(test_output,y_pred)*100) #76.4%
+print('Confusion Matrix: ',metrics.confusion_matrix(test_output,y_pred))
+
+
+print('\nNeural Networks')
+NN = MLPClassifier(hidden_layer_sizes=(1000, 1000), learning_rate_init=0.001, max_iter=200, verbose = 3)
+NN.fit(train_input, train_output)
+y_pred = NN.predict(test_input)
+print('Accuracy Score: ',metrics.accuracy_score(test_output,y_pred)*100) #77.08
